@@ -30,7 +30,8 @@ enum GaugeIcon {
 
     static func image(for state: GaugeState) -> NSImage {
         let image = NSImage(size: size, flipped: false) { _ in
-            let body = NSRect(x: 1, y: 1, width: 34, height: 14)
+            // Plain rounded bar (no battery nub) so it doesn't read as a battery.
+            let body = NSRect(x: 1, y: 1, width: 36, height: 14)
             let outline = NSBezierPath(roundedRect: body, xRadius: 3, yRadius: 3)
 
             if let percent = percent(for: state), let fill = fillColor(for: state) {
@@ -47,9 +48,6 @@ enum GaugeIcon {
             NSColor.labelColor.setStroke()
             outline.lineWidth = 1
             outline.stroke()
-
-            NSColor.labelColor.setFill()
-            NSBezierPath(roundedRect: NSRect(x: 35, y: 5, width: 2, height: 6), xRadius: 0.5, yRadius: 0.5).fill()
 
             drawLabel(label(for: state), in: body)
             return true
