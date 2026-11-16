@@ -69,7 +69,6 @@ final class UsagePoller {
             return
         }
         let outcome = await fetch(token)
-        await refreshFableIfDue(token: token)
         switch outcome {
         case .reading(let reading):
             update(.ok(reading, updated: now()))
@@ -85,6 +84,8 @@ final class UsagePoller {
                 update(.offline(last: nil, lastUpdate: nil))
             }
         }
+        // After the gauge update: the slower, rate-limited Fable fetch must not delay it.
+        await refreshFableIfDue(token: token)
     }
 
     func start() {
