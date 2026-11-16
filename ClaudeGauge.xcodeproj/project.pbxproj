@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		162208EA6A9F66A83BC4F22A /* GaugeIconTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69108AE1DA5463C56BECD740 /* GaugeIconTests.swift */; };
 		1FE4060ED9E112D84FA74FA2 /* ThemeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BABE9EC07FEC3B85A887AA2D /* ThemeTests.swift */; };
 		5BE42A35B1014B08D0DD2633 /* TokenReaderTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6C823F0C56D28EB87FC1491 /* TokenReaderTests.swift */; };
 		84AE56B9BE2AB4116D3E9221 /* UsagePollerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2220AA4086D308545261A3A5 /* UsagePollerTests.swift */; };
@@ -16,6 +17,7 @@
 		BC1E76874CDD833CBAFBC3B1 /* App.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23656F0079359ADB6D513D91 /* App.swift */; };
 		D114544DAF352398AF4E4C08 /* ResetFormatterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32DD68AC3C418EB66C949C95 /* ResetFormatterTests.swift */; };
 		D26E985CDA813FFD31149D07 /* UsageParserTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7548A044DE1E7D5B1B8EA53F /* UsageParserTests.swift */; };
+		D3A7EEC49D915ED9D8CC93B9 /* GaugeIcon.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB37FB1FE3BC3D163B5CC1A6 /* GaugeIcon.swift */; };
 		D593D73740770AF14715BF52 /* ResetFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 148EE43801483C1680E77FF0 /* ResetFormatter.swift */; };
 		DBEE1FA4DFB0A904BDDED5AD /* UsageClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4FC68BCC2D16DD28FDB0B2A /* UsageClient.swift */; };
 /* End PBXBuildFile section */
@@ -40,10 +42,12 @@
 		36FEE4ACBC76CD4E3D2BF53F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		3F1680CC91D4B17E8008AAC5 /* UsagePoller.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UsagePoller.swift; sourceTree = "<group>"; };
 		48E76A912FB0BFEA07A7BDC8 /* ClaudeGauge.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ClaudeGauge.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		69108AE1DA5463C56BECD740 /* GaugeIconTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GaugeIconTests.swift; sourceTree = "<group>"; };
 		7548A044DE1E7D5B1B8EA53F /* UsageParserTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UsageParserTests.swift; sourceTree = "<group>"; };
 		B4FC68BCC2D16DD28FDB0B2A /* UsageClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UsageClient.swift; sourceTree = "<group>"; };
 		B69628AB5B9F963B58281AEA /* ClaudeGaugeTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ClaudeGaugeTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		BABE9EC07FEC3B85A887AA2D /* ThemeTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThemeTests.swift; sourceTree = "<group>"; };
+		BB37FB1FE3BC3D163B5CC1A6 /* GaugeIcon.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GaugeIcon.swift; sourceTree = "<group>"; };
 		C6C823F0C56D28EB87FC1491 /* TokenReaderTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TokenReaderTests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -52,6 +56,7 @@
 			isa = PBXGroup;
 			children = (
 				23656F0079359ADB6D513D91 /* App.swift */,
+				BB37FB1FE3BC3D163B5CC1A6 /* GaugeIcon.swift */,
 				36FEE4ACBC76CD4E3D2BF53F /* Info.plist */,
 				148EE43801483C1680E77FF0 /* ResetFormatter.swift */,
 				2ED4C061E72837FE642FF007 /* Theme.swift */,
@@ -83,6 +88,7 @@
 		9624B0A458CBB0501577F8E1 /* ClaudeGaugeTests */ = {
 			isa = PBXGroup;
 			children = (
+				69108AE1DA5463C56BECD740 /* GaugeIconTests.swift */,
 				32DD68AC3C418EB66C949C95 /* ResetFormatterTests.swift */,
 				BABE9EC07FEC3B85A887AA2D /* ThemeTests.swift */,
 				C6C823F0C56D28EB87FC1491 /* TokenReaderTests.swift */,
@@ -173,6 +179,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				BC1E76874CDD833CBAFBC3B1 /* App.swift in Sources */,
+				D3A7EEC49D915ED9D8CC93B9 /* GaugeIcon.swift in Sources */,
 				D593D73740770AF14715BF52 /* ResetFormatter.swift in Sources */,
 				A930D2F58526EC05C34E36F6 /* Theme.swift in Sources */,
 				A81DAF9280BE117B72278457 /* TokenReader.swift in Sources */,
@@ -185,6 +192,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				162208EA6A9F66A83BC4F22A /* GaugeIconTests.swift in Sources */,
 				D114544DAF352398AF4E4C08 /* ResetFormatterTests.swift in Sources */,
 				1FE4060ED9E112D84FA74FA2 /* ThemeTests.swift in Sources */,
 				5BE42A35B1014B08D0DD2633 /* TokenReaderTests.swift in Sources */,
