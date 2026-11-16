@@ -18,7 +18,8 @@ done
 # Top-level code is only allowed in a file named main.swift.
 cp tools/readme-images.swift "$TMP/main.swift"
 swiftc -swift-version 5 -o "$TMP/readme-images" "${SOURCES[@]}" "$TMP/main.swift"
-"$TMP/readme-images" "$OUT"
+VERSION=$(/usr/libexec/PlistBuddy -c "Print :CFBundleShortVersionString" ClaudeGauge/Info.plist)
+"$TMP/readme-images" "$OUT" "$VERSION"
 
 sips -z 256 256 ClaudeGauge/Assets.xcassets/AppIcon.appiconset/icon_512x512@2x.png --out "$OUT/app-icon.png" >/dev/null
 echo "README images written to $OUT"

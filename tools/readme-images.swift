@@ -4,6 +4,8 @@
 import AppKit
 
 let outDir = CommandLine.arguments[1]
+/// App version, read from ClaudeGauge/Info.plist by make-readme-images.sh.
+let appVersion = CommandLine.arguments.count > 2 ? CommandLine.arguments[2] : "?"
 let scale: CGFloat = 2   // Retina-sized PNGs
 
 func reading(_ p: Int) -> UsageReading {
@@ -121,7 +123,7 @@ func menuMock(dark: Bool) -> NSImage {
         ("About claudegauge", true),
         ("Quit claudegauge          ⌘Q", true),
         ("—", false),
-        ("Version 0.1", false),
+        ("Version \(appVersion)", false),
     ]
     let rowH: CGFloat = 22, sepH: CGFloat = 11, padV: CGFloat = 6
     let height = padV * 2 + lines.reduce(0) { $0 + ($1.0 == "—" ? sepH : rowH) }

@@ -68,10 +68,11 @@ final class StatusMenu: NSObject, NSMenuDelegate {
         menu.addItem(Self.versionItem(Self.versionText()))
     }
 
-    /// "Version 0.1", from the bundle's CFBundleShortVersionString.
-    static func versionText(bundle: Bundle = .main) -> String {
-        let version = bundle.object(forInfoDictionaryKey: "CFBundleShortVersionString") as? String ?? "?"
-        return "Version \(version)"
+    /// "Version <x>", where <x> is read from the running app's CFBundleShortVersionString.
+    static func versionText(
+        _ version: String? = Bundle.main.object(forInfoDictionaryKey: "CFBundleShortVersionString") as? String
+    ) -> String {
+        "Version \(version ?? "?")"
     }
 
     /// A non-clickable, centred line in the same grey as the disabled usage lines.
