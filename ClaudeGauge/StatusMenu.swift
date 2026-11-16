@@ -23,6 +23,8 @@ final class StatusMenu: NSObject, NSMenuDelegate {
 
     private func updateIcon(_ state: GaugeState) {
         statusItem.button?.image = GaugeIcon.image(for: state)
+        statusItem.button?.toolTip = GaugeIcon.label(for: state)
+        statusItem.button?.setAccessibilityLabel(GaugeIcon.label(for: state))
     }
 
     // MARK: NSMenuDelegate

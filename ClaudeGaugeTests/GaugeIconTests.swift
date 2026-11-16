@@ -13,12 +13,22 @@ final class GaugeIconTests: XCTestCase {
     }
 
     func testLabels() {
-        XCTAssertEqual(GaugeIcon.label(for: .starting), "--")
-        XCTAssertEqual(GaugeIcon.label(for: ok(47)), "47%")
-        XCTAssertEqual(GaugeIcon.label(for: ok(100)), "100%")
-        XCTAssertEqual(GaugeIcon.label(for: .notLoggedIn), "⚠")
-        XCTAssertEqual(GaugeIcon.label(for: offline(47)), "47%")
-        XCTAssertEqual(GaugeIcon.label(for: offline(nil)), "--")
+        XCTAssertEqual(GaugeIcon.label(for: .starting), "Claude usage: checking…")
+        XCTAssertEqual(GaugeIcon.label(for: ok(47)), "Claude session usage: 47%")
+        XCTAssertEqual(GaugeIcon.label(for: ok(100)), "Claude session usage: 100%")
+        XCTAssertEqual(GaugeIcon.label(for: .notLoggedIn), "Claude usage: not logged in")
+        XCTAssertEqual(GaugeIcon.label(for: offline(47)), "Claude usage: offline (last 47%)")
+        XCTAssertEqual(GaugeIcon.label(for: offline(nil)), "Claude usage: offline")
+    }
+
+    func testNeedleSweepsClockwiseFromFlatLeftToFlatRight() {
+        XCTAssertEqual(GaugeIcon.needleAngle(forPercent: 0), .pi, accuracy: 1e-9)
+        XCTAssertEqual(GaugeIcon.needleAngle(forPercent: 50), .pi / 2, accuracy: 1e-9)
+        XCTAssertEqual(GaugeIcon.needleAngle(forPercent: 100), 0, accuracy: 1e-9)
+        XCTAssertEqual(GaugeIcon.needleAngle(forPercent: 25), 3 * .pi / 4, accuracy: 1e-9)
+        // Out-of-range values are clamped.
+        XCTAssertEqual(GaugeIcon.needleAngle(forPercent: -5), .pi, accuracy: 1e-9)
+        XCTAssertEqual(GaugeIcon.needleAngle(forPercent: 130), 0, accuracy: 1e-9)
     }
 
     func testFillColors() {
