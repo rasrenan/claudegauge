@@ -3,3 +3,4 @@ build/
 DerivedData/
 xcuserdata/
 .claude/worktrees/
+.superpowers/
