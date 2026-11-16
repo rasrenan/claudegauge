@@ -66,6 +66,24 @@ final class StatusMenuTests: XCTestCase {
         XCTAssertEqual(StatusMenu.versionText(nil), "version ?")
     }
 
+    func testVersionRowForEachUpdateState() {
+        let release = ReleaseInfo(version: SemVer(major: 0, minor: 2, patch: 0),
+                                  dmgURL: URL(string: "https://example.com/a.dmg")!,
+                                  pageURL: URL(string: "https://example.com/r")!)
+        let unknown = StatusMenu.versionRow(version: "0.1.0", state: .unknown)
+        XCTAssertEqual(unknown.text, "version 0.1.0")
+        XCTAssertNil(unknown.button)
+        let upToDate = StatusMenu.versionRow(version: "0.1.0", state: .upToDate)
+        XCTAssertEqual(upToDate.text, "version 0.1.0 \u{00B7} updated")
+        XCTAssertNil(upToDate.button)
+        let available = StatusMenu.versionRow(version: "0.1.0", state: .available(release))
+        XCTAssertEqual(available.text, "version 0.1.0")
+        XCTAssertEqual(available.button, "Update now")
+        let updating = StatusMenu.versionRow(version: "0.1.0", state: .updating)
+        XCTAssertEqual(updating.text, "version 0.1.0 \u{00B7} updating\u{2026}")
+        XCTAssertNil(updating.button)
+    }
+
     func testAboutOpensProjectOnGitHub() {
         XCTAssertEqual(StatusMenu.projectURL.absoluteString, "https://github.com/rasrenan/claudegauge")
     }

@@ -10,11 +10,13 @@ final class StatusMenu: NSObject, NSMenuDelegate {
 
     private let poller: UsagePoller
     private let launcher: LoginLauncher
+    private let updates: UpdateController
     private let statusItem: NSStatusItem
 
-    init(poller: UsagePoller, launcher: LoginLauncher) {
+    init(poller: UsagePoller, launcher: LoginLauncher, updates: UpdateController) {
         self.poller = poller
         self.launcher = launcher
+        self.updates = updates
         self.statusItem = NSStatusBar.system.statusItem(withLength: NSStatusItem.variableLength)
         super.init()
         let menu = NSMenu()
@@ -65,7 +67,21 @@ final class StatusMenu: NSObject, NSMenuDelegate {
         quitItem.target = self
         menu.addItem(quitItem)
         menu.addItem(.separator())
-        menu.addItem(Self.versionItem(Self.versionText()))
+        let row = Self.versionRow(
+            version: Bundle.main.object(forInfoDictionaryKey: "CFBundleShortVersionString") as? String,
+            state: updates.state)
+        menu.addItem(versionItem(text: row.text, button: row.button))
+    }
+
+    /// The text of the bottom row, and the title of its button when there is an update to install.
+    static func versionRow(version: String?, state: UpdateState) -> (text: String, button: String?) {
+        let base = versionText(version)
+        switch state {
+        case .unknown: return (base, nil)
+        case .upToDate: return ("\(base) \u{00B7} updated", nil)
+        case .available: return (base, "Update now")
+        case .updating: return ("\(base) \u{00B7} updating\u{2026}", nil)
+        }
     }
 
     /// "version <x>", where <x> is read from the running app's CFBundleShortVersionString.
@@ -75,20 +91,31 @@ final class StatusMenu: NSObject, NSMenuDelegate {
         "version \(version ?? "?")"
     }
 
-    /// A non-clickable, centred line in the same grey as the disabled usage lines.
-    private static func versionItem(_ text: String) -> NSMenuItem {
+    /// A centred line in the same grey as the disabled usage lines, with an optional button to its right.
+    private func versionItem(text: String, button title: String?) -> NSMenuItem {
         let label = NSTextField(labelWithString: text)
         label.font = NSFont.menuFont(ofSize: 0)
         label.textColor = .disabledControlTextColor
         label.alignment = .center
-        label.translatesAutoresizingMaskIntoConstraints = false
 
-        let container = NSView(frame: NSRect(x: 0, y: 0, width: 160, height: 22))
+        let row = NSStackView(views: [label])
+        row.orientation = .horizontal
+        row.spacing = 8
+        if let title {
+            let button = NSButton(title: title, target: self, action: #selector(installUpdate))
+            button.controlSize = .small
+            button.bezelStyle = .rounded
+            button.font = NSFont.systemFont(ofSize: NSFont.systemFontSize(for: .small))
+            row.addArrangedSubview(button)
+        }
+        row.translatesAutoresizingMaskIntoConstraints = false
+
+        let container = NSView(frame: NSRect(x: 0, y: 0, width: 160, height: title == nil ? 22 : 28))
         container.autoresizingMask = [.width]
-        container.addSubview(label)
+        container.addSubview(row)
         NSLayoutConstraint.activate([
-            label.centerXAnchor.constraint(equalTo: container.centerXAnchor),
-            label.centerYAnchor.constraint(equalTo: container.centerYAnchor),
+            row.centerXAnchor.constraint(equalTo: container.centerXAnchor),
+            row.centerYAnchor.constraint(equalTo: container.centerYAnchor),
         ])
 
         let item = NSMenuItem()
@@ -170,6 +197,12 @@ final class StatusMenu: NSObject, NSMenuDelegate {
         case .claudeNotFound:
             alert("Claude Code not found", "Install Claude Code and log in once, then try again.")
         }
+    }
+
+    @objc private func installUpdate() {
+        statusItem.menu?.cancelTracking()
+        let updates = self.updates
+        Task { await updates.installAvailable() }
     }
 
     @objc private func openAbout() {

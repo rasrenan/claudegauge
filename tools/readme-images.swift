@@ -123,7 +123,7 @@ func menuMock(dark: Bool) -> NSImage {
         ("About claudeGauge", true),
         ("Quit claudeGauge          ⌘Q", true),
         ("—", false),
-        ("version \(appVersion)", false),
+        ("version \(appVersion) · updated", false),
     ]
     let rowH: CGFloat = 22, sepH: CGFloat = 11, padV: CGFloat = 6
     let height = padV * 2 + lines.reduce(0) { $0 + ($1.0 == "—" ? sepH : rowH) }

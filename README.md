@@ -100,6 +100,7 @@ Click the dial to open its menu:
 | **Log in…** | Logs you in to Claude if claudeGauge says you're not logged in. It is shown in **bold** when you need it. |
 | **About claudeGauge** | Opens this project's page on GitHub in your browser. |
 | **Quit claudeGauge** | Closes the app and removes the dial from the menu bar. |
+| **version / Update now** | Shows the installed version. Says *updated* when you're on the latest release, or shows **Update now** when there's a new one. |
 
 ## Requirements
 
@@ -170,6 +171,15 @@ about a minute and a half.
 2. Click the dial and choose **Quit claudeGauge**.
 3. Delete **ClaudeGauge** from your **Applications** folder.
 
+## Updates
+
+claudeGauge checks GitHub for a new version shortly after it starts and then
+once a day. When one exists, the bottom line of the menu shows **Update now**.
+Clicking it downloads the new version from this repository's Releases, checks
+it, replaces the app and reopens it. There are no warnings and no repeated
+Open Anyway. Otherwise the line says "updated". If the app isn't in
+Applications, the button opens the download page instead.
+
 ## Questions
 
 **Does claudeGauge use up my Claude quota?**
@@ -189,6 +199,11 @@ You're offline, or Anthropic's API didn't answer. It recovers by itself.
 **Why is the Fable line missing?**
 Your account has no Fable limit, or claudeGauge hasn't read it yet. The Fable
 number is checked every 5 minutes.
+
+**Does claudeGauge contact anything besides Anthropic?**
+Once a day it asks GitHub (`api.github.com`) whether there is a newer release.
+That request contains no personal data, but like any web request it reveals
+your IP address to GitHub.
 
 **Does it work without Claude Code?**
 No. Claude Code provides the login. Install it and log in once.
@@ -222,6 +237,7 @@ ClaudeGauge/          app sources (one responsibility per file)
   LoginLauncher.swift   "Log in…" (opens Terminal with `claude auth login`)
   ResetFormatter.swift  "resets in 2h 13m" text
   Theme.swift           the green / amber / red colours
+  UpdateController.swift  update state and the daily check
 ClaudeGaugeTests/     unit tests (XCTest)
 tools/                icon, README image and .dmg builders
 packaging/            files shipped inside the .dmg
@@ -245,7 +261,18 @@ Other useful commands:
 - `./tools/make-dmg.sh` builds a universal Release and packages it as
   `build/ClaudeGauge.dmg` (app, Applications shortcut and
   `packaging/How to install.txt`). Attach that file to a GitHub Release named
-  after the version (e.g. `v0.1`) so the download link above points to it.
+  after the version (e.g. `v0.1.0`) so the download link above points to it.
+
+### Publishing a new version
+
+1. Set `CFBundleShortVersionString` in `project.yml` (three levels, e.g.
+   `0.2.0`) and run `xcodegen generate`.
+2. Run `./tools/make-dmg.sh`.
+3. Create a GitHub Release whose tag is `v<version>` (e.g. `v0.2.0`) and attach
+   `build/ClaudeGauge.dmg` (the file name must stay `ClaudeGauge.dmg`).
+
+Installed copies pick it up within a day. The app installs whatever the latest
+release contains, so keep two-factor authentication on the GitHub account.
 
 ### Manual test checklist
 
