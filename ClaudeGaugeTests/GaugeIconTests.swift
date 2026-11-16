@@ -21,6 +21,11 @@ final class GaugeIconTests: XCTestCase {
         XCTAssertEqual(GaugeIcon.label(for: offline(nil)), "Claude usage: offline")
     }
 
+    func testTicksAtQuarters() {
+        XCTAssertEqual(GaugeIcon.tickPercents, [25, 50, 75])
+        XCTAssertEqual(GaugeIcon.size, NSSize(width: 24, height: 18))
+    }
+
     func testNeedleSweepsClockwiseFromFlatLeftToFlatRight() {
         XCTAssertEqual(GaugeIcon.needleAngle(forPercent: 0), .pi, accuracy: 1e-9)
         XCTAssertEqual(GaugeIcon.needleAngle(forPercent: 50), .pi / 2, accuracy: 1e-9)
