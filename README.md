@@ -87,7 +87,7 @@ Click the dial to open its menu:
 <p align="center">
   <picture>
     <source media="(prefers-color-scheme: dark)" srcset="docs/images/menu-dark.png">
-    <img src="docs/images/menu-light.png" width="290" alt="claudegauge menu showing session, weekly and Fable usage, Launch at login, Log in and Quit">
+    <img src="docs/images/menu-light.png" width="290" alt="claudegauge menu showing session, weekly and Fable usage, Launch at login, Log in, About and Quit">
   </picture>
 </p>
 
@@ -98,6 +98,7 @@ Click the dial to open its menu:
 | **Fable** | Weekly usage of the Fable model. **Only shown if your account has a Fable limit.** |
 | **Launch at login** | When ticked, claudegauge starts automatically every time you turn on your Mac. |
 | **Log in…** | Logs you in to Claude if claudegauge says you're not logged in. It is shown in **bold** when you need it. |
+| **About claudegauge** | Opens this project's page on GitHub in your browser. |
 | **Quit claudegauge** | Closes the app and removes the dial from the menu bar. |
 
 ## Requirements

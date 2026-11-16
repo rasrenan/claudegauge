@@ -5,6 +5,9 @@ import ServiceManagement
 /// builds the dropdown menu each time it opens.
 @MainActor
 final class StatusMenu: NSObject, NSMenuDelegate {
+    /// Opened by "About claudegauge".
+    static let projectURL = URL(string: "https://github.com/rasrenan/claudegauge")!
+
     private let poller: UsagePoller
     private let launcher: LoginLauncher
     private let statusItem: NSStatusItem
@@ -53,6 +56,10 @@ final class StatusMenu: NSObject, NSMenuDelegate {
         }
         menu.addItem(loginItem)
         menu.addItem(.separator())
+
+        let aboutItem = NSMenuItem(title: "About claudegauge", action: #selector(openAbout), keyEquivalent: "")
+        aboutItem.target = self
+        menu.addItem(aboutItem)
 
         let quitItem = NSMenuItem(title: "Quit claudegauge", action: #selector(quit), keyEquivalent: "q")
         quitItem.target = self
@@ -132,6 +139,10 @@ final class StatusMenu: NSObject, NSMenuDelegate {
         case .claudeNotFound:
             alert("Claude Code not found", "Install Claude Code and log in once, then try again.")
         }
+    }
+
+    @objc private func openAbout() {
+        NSWorkspace.shared.open(Self.projectURL)
     }
 
     @objc private func quit() {

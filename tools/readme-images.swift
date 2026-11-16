@@ -118,6 +118,7 @@ func menuMock(dark: Bool) -> NSImage {
         ("Launch at login", true),
         ("Log in…", true),
         ("—", false),
+        ("About claudegauge", true),
         ("Quit claudegauge          ⌘Q", true),
     ]
     let rowH: CGFloat = 22, sepH: CGFloat = 11, padV: CGFloat = 6

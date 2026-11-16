@@ -53,4 +53,8 @@ final class StatusMenuTests: XCTestCase {
         XCTAssertEqual(StatusMenu.statusLines(for: .notLoggedIn, fable: f, now: now), ["Not logged in"])
         XCTAssertEqual(StatusMenu.statusLines(for: .starting, fable: f, now: now), ["Checking usage…"])
     }
+
+    func testAboutOpensProjectOnGitHub() {
+        XCTAssertEqual(StatusMenu.projectURL.absoluteString, "https://github.com/rasrenan/claudegauge")
+    }
 }
