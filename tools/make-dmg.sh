@@ -13,8 +13,13 @@ APP_NAME=ClaudeGauge
 VOLUME_NAME=claudeGauge
 VERSION=$(/usr/libexec/PlistBuddy -c "Print :CFBundleShortVersionString" ClaudeGauge/Info.plist)
 DMG="build/${APP_NAME}.dmg"
-STAGE="build/dmg-stage"
-RW_DMG="build/${APP_NAME}-rw.dmg"
+# Stage outside the repo: folders synced by iCloud/File Provider (e.g. ~/Documents)
+# add extended attributes that make `codesign --verify --strict` fail, and the
+# in-app updater rejects any update that doesn't pass that check.
+WORK=$(mktemp -d)
+trap 'rm -rf "$WORK"' EXIT
+STAGE="$WORK/stage"
+RW_DMG="$WORK/${APP_NAME}-rw.dmg"
 
 echo "Building claudeGauge ${VERSION} (universal)…"
 xcodebuild -project "${APP_NAME}.xcodeproj" -scheme "${APP_NAME}" -configuration Release \
@@ -22,9 +27,13 @@ xcodebuild -project "${APP_NAME}.xcodeproj" -scheme "${APP_NAME}" -configuration
 APP="build/Build/Products/Release/${APP_NAME}.app"
 
 echo "Staging…"
-rm -rf "$STAGE" "$DMG" "$RW_DMG"
+rm -f "$DMG"
 mkdir -p "$STAGE"
-cp -R "$APP" "$STAGE/claudeGauge.app"
+ditto --norsrc --noextattr "$APP" "$STAGE/claudeGauge.app"
+xattr -cr "$STAGE/claudeGauge.app"
+codesign --force --deep --sign - "$STAGE/claudeGauge.app" 2>/dev/null
+# The updater runs exactly this check on downloaded updates; refuse to ship one that fails it.
+codesign --verify --deep --strict "$STAGE/claudeGauge.app"
 ln -s /Applications "$STAGE/Applications"
 cp "packaging/How to install.txt" "$STAGE/"
 
