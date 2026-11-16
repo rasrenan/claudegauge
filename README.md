@@ -107,9 +107,39 @@ Click the dial to open its menu:
 - **[Claude Code](https://claude.com/claude-code)** installed and logged in at
   least once. claudeGauge reuses its login, so there is no separate account or
   password.
-- **Xcode** (free on the Mac App Store), only to build the app the first time
 
 ## Install
+
+There are two ways to install. **Option 1 needs no Terminal and no Xcode.**
+
+### Option 1: download the app (recommended)
+
+<p align="center">
+  <a href="https://github.com/rasrenan/claudegauge/releases/latest/download/ClaudeGauge.dmg"><b>⬇️ Download ClaudeGauge.dmg</b></a>
+</p>
+
+1. Open the downloaded **ClaudeGauge.dmg**. A window shows the claudeGauge
+   app, your **Applications** folder and a **How to install.txt** file with
+   these same steps.
+2. **Drag claudeGauge onto Applications.**
+3. Open your **Applications** folder and double-click **claudeGauge**.
+4. macOS says it *"could not verify claudeGauge is free of malware"*. That is
+   expected: claudeGauge is free and isn't signed with a paid Apple developer
+   account. Close the message with **Done** (not *Move to Trash*).
+5. Open **System Settings → Privacy & Security**, scroll to the bottom and click
+   **Open Anyway** next to the claudeGauge message. Confirm with your password
+   or Touch ID, then click **Open Anyway** again. You only do this once.
+6. macOS asks whether `security` may use "Claude Code-credentials" from your
+   keychain. Click **Always Allow**. This is how claudeGauge reads your Claude
+   login. If you click *Deny*, the dial shows `!`.
+7. The dial appears in the menu bar. Click it and tick **Launch at login** so
+   it starts with your Mac.
+
+The app works on both Apple Silicon and Intel Macs.
+
+### Option 2: build from source
+
+You need **Xcode** (free on the Mac App Store).
 
 1. Download this repository (green **Code** button → **Download ZIP**, or
    `git clone`).
@@ -120,12 +150,9 @@ Click the dial to open its menu:
    ```
 
    This builds the app, copies it to your **Applications** folder and opens it.
-   The dial appears in the menu bar.
-3. **The first time it runs**, macOS asks whether `security` may use the
-   "Claude Code-credentials" item from your keychain. Click **Always Allow**.
-   This is how claudeGauge reads your Claude login. If you click *Deny*, the
-   dial shows `!`.
-4. Click the dial and tick **Launch at login** so it starts with your Mac.
+   Because you built it yourself, macOS doesn't show the malware warning.
+3. Do steps 6 and 7 of Option 1 (allow the keychain prompt, tick **Launch at
+   login**).
 
 ## Logging in
 
@@ -196,7 +223,8 @@ ClaudeGauge/          app sources (one responsibility per file)
   ResetFormatter.swift  "resets in 2h 13m" text
   Theme.swift           the green / amber / red colours
 ClaudeGaugeTests/     unit tests (XCTest)
-tools/                icon and README image generators
+tools/                icon, README image and .dmg builders
+packaging/            files shipped inside the .dmg
 project.yml           XcodeGen project definition
 ```
 
@@ -214,6 +242,10 @@ Other useful commands:
   (`brew install xcodegen`).
 - `./tools/make-icon.sh` regenerates the app icon.
 - `./tools/make-readme-images.sh` regenerates the images in this README.
+- `./tools/make-dmg.sh` builds a universal Release and packages it as
+  `build/ClaudeGauge.dmg` (app, Applications shortcut and
+  `packaging/How to install.txt`). Attach that file to a GitHub Release named
+  after the version (e.g. `v0.1`) so the download link above points to it.
 
 ### Manual test checklist
 

@@ -1,0 +1,85 @@
+claudeGauge — How to install
+============================
+
+claudeGauge shows how much of your Claude session you have used, as a small
+dial in your Mac's menu bar.
+
+Before you start
+----------------
+- macOS 14 (Sonoma) or later.
+- Claude Code installed and logged in at least once
+  (https://claude.com/claude-code). claudeGauge reuses its login.
+
+Install
+-------
+1. Drag the claudeGauge icon onto the Applications folder in this window.
+
+2. Open your Applications folder and double-click claudeGauge.
+
+3. macOS will say it "could not verify claudeGauge is free of malware".
+   This is expected: claudeGauge is free and not signed with a paid Apple
+   developer account. Click "Done" (do NOT click "Move to Trash").
+
+4. Open System Settings > Privacy & Security. Scroll to the bottom, find the
+   message about claudeGauge and click "Open Anyway". Confirm with your Mac
+   password or Touch ID, then click "Open Anyway" again.
+   You only need to do this once.
+
+5. macOS asks whether "security" may use "Claude Code-credentials" from your
+   keychain. Click "Always Allow". This is how claudeGauge reads your Claude
+   login.
+
+6. The dial appears in the menu bar, next to Wi-Fi and the clock.
+   Click it and tick "Launch at login" so it starts with your Mac.
+
+You can now eject this disk image and delete the .dmg file.
+
+If the dial shows "!", click it and choose "Log in…".
+
+More help: https://github.com/rasrenan/claudegauge
+
+
+----------------------------------------------------------------------------
+
+
+claudeGauge — Como instalar
+===========================
+
+O claudeGauge mostra quanto da sua sessão do Claude você já usou, como um
+pequeno mostrador na barra de menus do Mac.
+
+Antes de começar
+----------------
+- macOS 14 (Sonoma) ou mais novo.
+- Claude Code instalado e com login feito pelo menos uma vez
+  (https://claude.com/claude-code). O claudeGauge reaproveita esse login.
+
+Instalação
+----------
+1. Arraste o ícone do claudeGauge para a pasta Aplicativos (Applications)
+   nesta janela.
+
+2. Abra a pasta Aplicativos e dê dois cliques no claudeGauge.
+
+3. O macOS vai dizer que "não pôde verificar se o claudeGauge está livre de
+   malware". É esperado: o claudeGauge é gratuito e não é assinado com uma
+   conta paga de desenvolvedor da Apple. Feche o aviso clicando em "OK" ou
+   "Concluído" (NÃO clique em "Mover para o Lixo").
+
+4. Abra Ajustes do Sistema > Privacidade e Segurança. Role até o final,
+   encontre a mensagem sobre o claudeGauge e clique em "Abrir Mesmo Assim".
+   Confirme com a senha do Mac ou Touch ID e clique em "Abrir Mesmo Assim"
+   de novo. Isso só precisa ser feito uma vez.
+
+5. O macOS pergunta se o "security" pode usar o item "Claude Code-credentials"
+   das suas chaves. Clique em "Sempre Permitir". É assim que o claudeGauge lê
+   o seu login do Claude.
+
+6. O mostrador aparece na barra de menus, ao lado do Wi-Fi e do relógio.
+   Clique nele e marque "Launch at login" para ele abrir junto com o Mac.
+
+Agora você pode ejetar esta imagem de disco e apagar o arquivo .dmg.
+
+Se o mostrador mostrar "!", clique nele e escolha "Log in…".
+
+Mais ajuda: https://github.com/rasrenan/claudegauge
