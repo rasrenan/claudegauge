@@ -64,6 +64,36 @@ final class StatusMenu: NSObject, NSMenuDelegate {
         let quitItem = NSMenuItem(title: "Quit claudegauge", action: #selector(quit), keyEquivalent: "q")
         quitItem.target = self
         menu.addItem(quitItem)
+        menu.addItem(.separator())
+        menu.addItem(Self.versionItem(Self.versionText()))
+    }
+
+    /// "Version 0.1", from the bundle's CFBundleShortVersionString.
+    static func versionText(bundle: Bundle = .main) -> String {
+        let version = bundle.object(forInfoDictionaryKey: "CFBundleShortVersionString") as? String ?? "?"
+        return "Version \(version)"
+    }
+
+    /// A non-clickable, centred line in the same grey as the disabled usage lines.
+    private static func versionItem(_ text: String) -> NSMenuItem {
+        let label = NSTextField(labelWithString: text)
+        label.font = NSFont.menuFont(ofSize: 0)
+        label.textColor = .disabledControlTextColor
+        label.alignment = .center
+        label.translatesAutoresizingMaskIntoConstraints = false
+
+        let container = NSView(frame: NSRect(x: 0, y: 0, width: 160, height: 22))
+        container.autoresizingMask = [.width]
+        container.addSubview(label)
+        NSLayoutConstraint.activate([
+            label.centerXAnchor.constraint(equalTo: container.centerXAnchor),
+            label.centerYAnchor.constraint(equalTo: container.centerYAnchor),
+        ])
+
+        let item = NSMenuItem()
+        item.view = container
+        item.isEnabled = false
+        return item
     }
 
     private static func needsAttention(_ state: GaugeState) -> Bool {

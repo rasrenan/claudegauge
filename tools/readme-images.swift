@@ -120,6 +120,8 @@ func menuMock(dark: Bool) -> NSImage {
         ("—", false),
         ("About claudegauge", true),
         ("Quit claudegauge          ⌘Q", true),
+        ("—", false),
+        ("Version 0.1", false),
     ]
     let rowH: CGFloat = 22, sepH: CGFloat = 11, padV: CGFloat = 6
     let height = padV * 2 + lines.reduce(0) { $0 + ($1.0 == "—" ? sepH : rowH) }
@@ -144,7 +146,10 @@ func menuMock(dark: Bool) -> NSImage {
             if text == "Launch at login" {
                 ("✓" as NSString).draw(at: NSPoint(x: 10, y: y + 3), withAttributes: attrs)
             }
-            (text as NSString).draw(at: NSPoint(x: 26, y: y + 3), withAttributes: attrs)
+            let x = text.hasPrefix("Version")
+                ? (width - (text as NSString).size(withAttributes: attrs).width) / 2
+                : 26
+            (text as NSString).draw(at: NSPoint(x: x, y: y + 3), withAttributes: attrs)
         }
     }
 }

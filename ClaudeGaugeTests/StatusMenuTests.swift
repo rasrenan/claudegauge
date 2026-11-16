@@ -54,6 +54,11 @@ final class StatusMenuTests: XCTestCase {
         XCTAssertEqual(StatusMenu.statusLines(for: .starting, fable: f, now: now), ["Checking usage…"])
     }
 
+    func testVersionTextComesFromTheAppBundle() {
+        // Unit tests are hosted inside the app, so Bundle.main is ClaudeGauge.app.
+        XCTAssertEqual(StatusMenu.versionText(), "Version 0.1")
+    }
+
     func testAboutOpensProjectOnGitHub() {
         XCTAssertEqual(StatusMenu.projectURL.absoluteString, "https://github.com/rasrenan/claudegauge")
     }
