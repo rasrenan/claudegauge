@@ -152,6 +152,11 @@ func menuMock(dark: Bool) -> NSImage {
                 ? (width - (text as NSString).size(withAttributes: attrs).width) / 2
                 : 26
             (text as NSString).draw(at: NSPoint(x: x, y: y + 3), withAttributes: attrs)
+            if text.hasPrefix("version"),
+               let icon = NSImage(contentsOfFile: "ClaudeGauge/Assets.xcassets/AppIcon.appiconset/icon_32x32@2x.png") {
+                // App icon pinned to the right end of the version row, as in the app.
+                icon.draw(in: NSRect(x: width - 12 - 18, y: y + (rowH - 18) / 2, width: 18, height: 18))
+            }
         }
     }
 }

@@ -92,6 +92,9 @@ final class StatusMenu: NSObject, NSMenuDelegate {
     }
 
     /// A centred line in the same grey as the disabled usage lines, with an optional button to its right.
+    /// Size of the app icon shown at the right end of the version row.
+    static let versionIconSize: CGFloat = 18
+
     private func versionItem(text: String, button title: String?) -> NSMenuItem {
         let label = NSTextField(labelWithString: text)
         label.font = NSFont.menuFont(ofSize: 0)
@@ -113,9 +116,21 @@ final class StatusMenu: NSObject, NSMenuDelegate {
         let container = NSView(frame: NSRect(x: 0, y: 0, width: 160, height: title == nil ? 22 : 28))
         container.autoresizingMask = [.width]
         container.addSubview(row)
+
+        // The app icon, pinned to the right end of the row.
+        let icon = NSImageView(image: NSImage(named: NSImage.applicationIconName) ?? NSImage())
+        icon.imageScaling = .scaleProportionallyUpOrDown
+        icon.translatesAutoresizingMaskIntoConstraints = false
+        container.addSubview(icon)
+
         NSLayoutConstraint.activate([
             row.centerXAnchor.constraint(equalTo: container.centerXAnchor),
             row.centerYAnchor.constraint(equalTo: container.centerYAnchor),
+            icon.widthAnchor.constraint(equalToConstant: Self.versionIconSize),
+            icon.heightAnchor.constraint(equalToConstant: Self.versionIconSize),
+            icon.trailingAnchor.constraint(equalTo: container.trailingAnchor, constant: -12),
+            icon.centerYAnchor.constraint(equalTo: container.centerYAnchor),
+            row.trailingAnchor.constraint(lessThanOrEqualTo: icon.leadingAnchor, constant: -6),
         ])
 
         let item = NSMenuItem()
