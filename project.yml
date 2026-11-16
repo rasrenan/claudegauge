@@ -29,6 +29,7 @@ targets:
       base:
         PRODUCT_BUNDLE_IDENTIFIER: io.github.rasrenan.claudegauge
         PRODUCT_NAME: ClaudeGauge
+        ASSETCATALOG_COMPILER_APPICON_NAME: AppIcon
   ClaudeGaugeTests:
     type: bundle.unit-test
     platform: macOS

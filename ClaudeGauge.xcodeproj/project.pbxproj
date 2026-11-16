@@ -26,6 +26,7 @@
 		D3A7EEC49D915ED9D8CC93B9 /* GaugeIcon.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB37FB1FE3BC3D163B5CC1A6 /* GaugeIcon.swift */; };
 		D593D73740770AF14715BF52 /* ResetFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 148EE43801483C1680E77FF0 /* ResetFormatter.swift */; };
 		DBEE1FA4DFB0A904BDDED5AD /* UsageClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4FC68BCC2D16DD28FDB0B2A /* UsageClient.swift */; };
+		F2FF059D707F229C9BB5CF9D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1464FB6A24F6756E2C818238 /* Assets.xcassets */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -40,6 +41,7 @@
 
 /* Begin PBXFileReference section */
 		0BA01901220F3060334CCBFE /* FableClientTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FableClientTests.swift; sourceTree = "<group>"; };
+		1464FB6A24F6756E2C818238 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		148EE43801483C1680E77FF0 /* ResetFormatter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResetFormatter.swift; sourceTree = "<group>"; };
 		2220AA4086D308545261A3A5 /* UsagePollerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UsagePollerTests.swift; sourceTree = "<group>"; };
 		23656F0079359ADB6D513D91 /* App.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = App.swift; sourceTree = "<group>"; };
@@ -68,6 +70,7 @@
 			isa = PBXGroup;
 			children = (
 				23656F0079359ADB6D513D91 /* App.swift */,
+				1464FB6A24F6756E2C818238 /* Assets.xcassets */,
 				4BA59239A66B600B52303863 /* FableClient.swift */,
 				BB37FB1FE3BC3D163B5CC1A6 /* GaugeIcon.swift */,
 				36FEE4ACBC76CD4E3D2BF53F /* Info.plist */,
@@ -124,6 +127,7 @@
 			buildConfigurationList = A29BF29CEAE348CFBDC7401E /* Build configuration list for PBXNativeTarget "ClaudeGauge" */;
 			buildPhases = (
 				013E7D10A925F426332347AE /* Sources */,
+				BDCC98284CFD0AAAEC7EB923 /* Resources */,
 			);
 			buildRules = (
 			);
@@ -190,6 +194,17 @@
 			);
 		};
 /* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		BDCC98284CFD0AAAEC7EB923 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				F2FF059D707F229C9BB5CF9D /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		013E7D10A925F426332347AE /* Sources */ = {
