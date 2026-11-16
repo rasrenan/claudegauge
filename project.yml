@@ -1,0 +1,50 @@
+name: ClaudeGauge
+options:
+  bundleIdPrefix: io.github.rasrenan
+  deploymentTarget:
+    macOS: "14.0"
+settings:
+  base:
+    MACOSX_DEPLOYMENT_TARGET: "14.0"
+    SWIFT_VERSION: "5.0"
+    CODE_SIGN_IDENTITY: "-"
+    CODE_SIGN_STYLE: Manual
+    ENABLE_HARDENED_RUNTIME: NO
+    ENABLE_APP_SANDBOX: NO
+    GENERATE_INFOPLIST_FILE: NO
+targets:
+  ClaudeGauge:
+    type: application
+    platform: macOS
+    sources: [ClaudeGauge]
+    info:
+      path: ClaudeGauge/Info.plist
+      properties:
+        LSUIElement: true
+        CFBundleDisplayName: claudegauge
+        CFBundleShortVersionString: "0.1.0"
+        CFBundleVersion: "1"
+        NSHumanReadableCopyright: MIT
+    settings:
+      base:
+        PRODUCT_BUNDLE_IDENTIFIER: io.github.rasrenan.claudegauge
+        PRODUCT_NAME: ClaudeGauge
+  ClaudeGaugeTests:
+    type: bundle.unit-test
+    platform: macOS
+    sources: [ClaudeGaugeTests]
+    dependencies:
+      - target: ClaudeGauge
+    settings:
+      base:
+        PRODUCT_BUNDLE_IDENTIFIER: io.github.rasrenan.claudegauge.tests
+        GENERATE_INFOPLIST_FILE: YES
+        TEST_HOST: $(BUILT_PRODUCTS_DIR)/ClaudeGauge.app/Contents/MacOS/ClaudeGauge
+        BUNDLE_LOADER: $(TEST_HOST)
+schemes:
+  ClaudeGauge:
+    build:
+      targets:
+        ClaudeGauge: all
+    test:
+      targets: [ClaudeGaugeTests]
