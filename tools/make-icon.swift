@@ -1,4 +1,4 @@
-// Renders the claudegauge app icon (1024×1024 PNG) with CoreGraphics.
+// Renders the claudeGauge app icon (1024×1024 PNG) with CoreGraphics.
 // Usage: swift tools/make-icon.swift <output.png>
 //
 // Concept: a small terra-cotta pixel critter whose antenna is the needle of a

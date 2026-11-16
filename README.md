@@ -1,8 +1,8 @@
 <p align="center">
-  <img src="docs/images/app-icon.png" width="128" alt="claudegauge app icon">
+  <img src="docs/images/app-icon.png" width="128" alt="claudeGauge app icon">
 </p>
 
-<h1 align="center">claudegauge</h1>
+<h1 align="center">claudeGauge</h1>
 
 <p align="center">
   <b>A tiny speedometer in your Mac's menu bar that shows how much of your Claude usage limit you have used.</b>
@@ -19,7 +19,7 @@ session to reset. There is also a **weekly** limit on top of that.
 You normally only find out how close you are when you open the usage page, or
 when Claude stops you.
 
-**claudegauge puts that number in front of you all the time.** It lives in the
+**claudeGauge puts that number in front of you all the time.** It lives in the
 macOS menu bar, next to Wi-Fi and the clock, as a small dial. The needle moves
 up as you use Claude, like a car's speedometer.
 
@@ -28,7 +28,7 @@ up as you use Claude, like a car's speedometer.
 <p align="center">
   <picture>
     <source media="(prefers-color-scheme: dark)" srcset="docs/images/menubar-25-dark.png">
-    <img src="docs/images/menubar-25-light.png" width="560" alt="Menu bar with the claudegauge dial at 25%, painted green">
+    <img src="docs/images/menubar-25-light.png" width="560" alt="Menu bar with the claudeGauge dial at 25%, painted green">
   </picture>
 </p>
 
@@ -38,7 +38,7 @@ Time to slow down:
 <p align="center">
   <picture>
     <source media="(prefers-color-scheme: dark)" srcset="docs/images/menubar-75-dark.png">
-    <img src="docs/images/menubar-75-light.png" width="560" alt="Menu bar with the claudegauge dial at 75%, painted amber">
+    <img src="docs/images/menubar-75-light.png" width="560" alt="Menu bar with the claudeGauge dial at 75%, painted amber">
   </picture>
 </p>
 
@@ -73,7 +73,7 @@ There are also three special states:
 
 - **Offline** (grey): the Mac has no internet. The needle stays at the last
   known value until the connection is back.
-- **Not logged in** (`!`): claudegauge can't find a valid Claude login. See
+- **Not logged in** (`!`): claudeGauge can't find a valid Claude login. See
   [Logging in](#logging-in).
 - **Starting** (empty dial): shown for a few seconds while the first reading
   comes in.
@@ -87,7 +87,7 @@ Click the dial to open its menu:
 <p align="center">
   <picture>
     <source media="(prefers-color-scheme: dark)" srcset="docs/images/menu-dark.png">
-    <img src="docs/images/menu-light.png" width="290" alt="claudegauge menu showing session, weekly and Fable usage, Launch at login, Log in, About and Quit">
+    <img src="docs/images/menu-light.png" width="290" alt="claudeGauge menu showing session, weekly and Fable usage, Launch at login, Log in, About and Quit">
   </picture>
 </p>
 
@@ -96,16 +96,16 @@ Click the dial to open its menu:
 | **Session** | Usage of the current 5-hour session and how long until it resets. This is what the dial shows. |
 | **Weekly** | Usage of your 7-day limit and when it resets. |
 | **Fable** | Weekly usage of the Fable model. **Only shown if your account has a Fable limit.** |
-| **Launch at login** | When ticked, claudegauge starts automatically every time you turn on your Mac. |
-| **Log in…** | Logs you in to Claude if claudegauge says you're not logged in. It is shown in **bold** when you need it. |
-| **About claudegauge** | Opens this project's page on GitHub in your browser. |
-| **Quit claudegauge** | Closes the app and removes the dial from the menu bar. |
+| **Launch at login** | When ticked, claudeGauge starts automatically every time you turn on your Mac. |
+| **Log in…** | Logs you in to Claude if claudeGauge says you're not logged in. It is shown in **bold** when you need it. |
+| **About claudeGauge** | Opens this project's page on GitHub in your browser. |
+| **Quit claudeGauge** | Closes the app and removes the dial from the menu bar. |
 
 ## Requirements
 
 - A Mac with **macOS 14 (Sonoma) or later**
 - **[Claude Code](https://claude.com/claude-code)** installed and logged in at
-  least once. claudegauge reuses its login, so there is no separate account or
+  least once. claudeGauge reuses its login, so there is no separate account or
   password.
 - **Xcode** (free on the Mac App Store), only to build the app the first time
 
@@ -123,13 +123,13 @@ Click the dial to open its menu:
    The dial appears in the menu bar.
 3. **The first time it runs**, macOS asks whether `security` may use the
    "Claude Code-credentials" item from your keychain. Click **Always Allow**.
-   This is how claudegauge reads your Claude login. If you click *Deny*, the
+   This is how claudeGauge reads your Claude login. If you click *Deny*, the
    dial shows `!`.
 4. Click the dial and tick **Launch at login** so it starts with your Mac.
 
 ## Logging in
 
-claudegauge doesn't have its own account. It uses the login that **Claude
+claudeGauge doesn't have its own account. It uses the login that **Claude
 Code** already saved on your Mac.
 
 If the dial shows `!` (not logged in), click it and choose **Log in…**. A
@@ -140,27 +140,27 @@ about a minute and a half.
 ## Uninstall
 
 1. Click the dial and untick **Launch at login**.
-2. Click the dial and choose **Quit claudegauge**.
+2. Click the dial and choose **Quit claudeGauge**.
 3. Delete **ClaudeGauge** from your **Applications** folder.
 
 ## Questions
 
-**Does claudegauge use up my Claude quota?**
+**Does claudeGauge use up my Claude quota?**
 Barely. Once a minute it sends Claude the smallest possible request (one word,
 one token of reply) and reads the usage numbers that come back with the answer.
 The effect on your limit is negligible.
 
 **Where does my login go?**
-Nowhere new. claudegauge reads Claude Code's token from your Mac's keychain and
+Nowhere new. claudeGauge reads Claude Code's token from your Mac's keychain and
 sends it **only to Anthropic's API** (`api.anthropic.com`), the same place
-Claude Code sends it. Nothing is stored or sent anywhere else, and claudegauge
+Claude Code sends it. Nothing is stored or sent anywhere else, and claudeGauge
 never refreshes or changes your login.
 
 **The dial is grey.**
 You're offline, or Anthropic's API didn't answer. It recovers by itself.
 
 **Why is the Fable line missing?**
-Your account has no Fable limit, or claudegauge hasn't read it yet. The Fable
+Your account has no Fable limit, or claudeGauge hasn't read it yet. The Fable
 number is checked every 5 minutes.
 
 **Does it work without Claude Code?**
@@ -223,7 +223,7 @@ Other useful commands:
    in and the dial recovers.
 4. Turn **Launch at login** on and reboot: the app is running. Turn it off and
    reboot: the app is not running.
-5. **Quit claudegauge** removes the dial.
+5. **Quit claudeGauge** removes the dial.
 
 ## Credit
 

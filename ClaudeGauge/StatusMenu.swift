@@ -5,7 +5,7 @@ import ServiceManagement
 /// builds the dropdown menu each time it opens.
 @MainActor
 final class StatusMenu: NSObject, NSMenuDelegate {
-    /// Opened by "About claudegauge".
+    /// Opened by "About claudeGauge".
     static let projectURL = URL(string: "https://github.com/rasrenan/claudegauge")!
 
     private let poller: UsagePoller
@@ -57,22 +57,22 @@ final class StatusMenu: NSObject, NSMenuDelegate {
         menu.addItem(loginItem)
         menu.addItem(.separator())
 
-        let aboutItem = NSMenuItem(title: "About claudegauge", action: #selector(openAbout), keyEquivalent: "")
+        let aboutItem = NSMenuItem(title: "About claudeGauge", action: #selector(openAbout), keyEquivalent: "")
         aboutItem.target = self
         menu.addItem(aboutItem)
 
-        let quitItem = NSMenuItem(title: "Quit claudegauge", action: #selector(quit), keyEquivalent: "q")
+        let quitItem = NSMenuItem(title: "Quit claudeGauge", action: #selector(quit), keyEquivalent: "q")
         quitItem.target = self
         menu.addItem(quitItem)
         menu.addItem(.separator())
         menu.addItem(Self.versionItem(Self.versionText()))
     }
 
-    /// "Version <x>", where <x> is read from the running app's CFBundleShortVersionString.
+    /// "version <x>", where <x> is read from the running app's CFBundleShortVersionString.
     static func versionText(
         _ version: String? = Bundle.main.object(forInfoDictionaryKey: "CFBundleShortVersionString") as? String
     ) -> String {
-        "Version \(version ?? "?")"
+        "version \(version ?? "?")"
     }
 
     /// A non-clickable, centred line in the same grey as the disabled usage lines.

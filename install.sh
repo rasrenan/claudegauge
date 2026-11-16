@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-# Build claudegauge in Release mode and install it to /Applications.
+# Build claudeGauge in Release mode and install it to /Applications.
 set -euo pipefail
 
 cd "$(dirname "$0")"
@@ -30,4 +30,4 @@ rm -rf "${INSTALLED_APP}"
 cp -R "${BUILT_APP}" "${INSTALLED_APP}"
 open "${INSTALLED_APP}"
 
-echo "claudegauge installed. Click the gauge in the menu bar → Launch at login to start it with your Mac."
+echo "claudeGauge installed. Click the gauge in the menu bar → Launch at login to start it with your Mac."

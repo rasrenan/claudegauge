@@ -56,7 +56,7 @@ func render(_ size: NSSize, dark: Bool, _ draw: @escaping (NSRect) -> Void) -> N
 
 let barH: CGFloat = 24
 
-/// A slice of the macOS menu bar: claudegauge next to some system icons and the clock.
+/// A slice of the macOS menu bar: claudeGauge next to some system icons and the clock.
 func menuBar(_ state: GaugeState, dark: Bool) -> NSImage {
     let items: [NSImage] = [GaugeIcon.image(for: state), symbol("wifi"), symbol("battery.75percent"),
                             symbol("magnifyingglass"), symbol("switch.2")]
@@ -120,10 +120,10 @@ func menuMock(dark: Bool) -> NSImage {
         ("Launch at login", true),
         ("Log in…", true),
         ("—", false),
-        ("About claudegauge", true),
-        ("Quit claudegauge          ⌘Q", true),
+        ("About claudeGauge", true),
+        ("Quit claudeGauge          ⌘Q", true),
         ("—", false),
-        ("Version \(appVersion)", false),
+        ("version \(appVersion)", false),
     ]
     let rowH: CGFloat = 22, sepH: CGFloat = 11, padV: CGFloat = 6
     let height = padV * 2 + lines.reduce(0) { $0 + ($1.0 == "—" ? sepH : rowH) }
@@ -148,7 +148,7 @@ func menuMock(dark: Bool) -> NSImage {
             if text == "Launch at login" {
                 ("✓" as NSString).draw(at: NSPoint(x: 10, y: y + 3), withAttributes: attrs)
             }
-            let x = text.hasPrefix("Version")
+            let x = text.hasPrefix("version")
                 ? (width - (text as NSString).size(withAttributes: attrs).width) / 2
                 : 26
             (text as NSString).draw(at: NSPoint(x: x, y: y + 3), withAttributes: attrs)

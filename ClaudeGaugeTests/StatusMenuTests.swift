@@ -58,12 +58,12 @@ final class StatusMenuTests: XCTestCase {
         // Unit tests are hosted inside the app, so Bundle.main is ClaudeGauge.app.
         let bundleVersion = Bundle.main.object(forInfoDictionaryKey: "CFBundleShortVersionString") as? String
         XCTAssertNotNil(bundleVersion)
-        XCTAssertEqual(StatusMenu.versionText(), "Version \(bundleVersion!)")
+        XCTAssertEqual(StatusMenu.versionText(), "version \(bundleVersion!)")
     }
 
     func testVersionTextFollowsWhateverVersionItIsGiven() {
-        XCTAssertEqual(StatusMenu.versionText("2.7"), "Version 2.7")
-        XCTAssertEqual(StatusMenu.versionText(nil), "Version ?")
+        XCTAssertEqual(StatusMenu.versionText("2.7"), "version 2.7")
+        XCTAssertEqual(StatusMenu.versionText(nil), "version ?")
     }
 
     func testAboutOpensProjectOnGitHub() {

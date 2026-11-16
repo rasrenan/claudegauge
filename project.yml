@@ -21,7 +21,7 @@ targets:
       path: ClaudeGauge/Info.plist
       properties:
         LSUIElement: true
-        CFBundleDisplayName: claudegauge
+        CFBundleDisplayName: claudeGauge
         CFBundleShortVersionString: "0.1"
         CFBundleVersion: "1"
         NSHumanReadableCopyright: MIT
