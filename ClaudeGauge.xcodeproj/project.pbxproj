@@ -9,10 +9,13 @@
 /* Begin PBXBuildFile section */
 		162208EA6A9F66A83BC4F22A /* GaugeIconTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69108AE1DA5463C56BECD740 /* GaugeIconTests.swift */; };
 		1FE4060ED9E112D84FA74FA2 /* ThemeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BABE9EC07FEC3B85A887AA2D /* ThemeTests.swift */; };
+		3AA211740306D6760F06A1B1 /* FableClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BA59239A66B600B52303863 /* FableClient.swift */; };
 		3B89C3D1A4A83DB85A43C619 /* StatusMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = 288169152A6D7387D8486AA1 /* StatusMenu.swift */; };
 		572159CA4B084E29FE0A3086 /* LoginLauncherTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 624506873020CF42AF19F111 /* LoginLauncherTests.swift */; };
 		5BE42A35B1014B08D0DD2633 /* TokenReaderTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6C823F0C56D28EB87FC1491 /* TokenReaderTests.swift */; };
 		84AE56B9BE2AB4116D3E9221 /* UsagePollerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2220AA4086D308545261A3A5 /* UsagePollerTests.swift */; };
+		9AFCB32228305EEACFED14A3 /* FableClientTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BA01901220F3060334CCBFE /* FableClientTests.swift */; };
+		9CEC345540C69B03E51ADD0B /* StatusMenuTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 276207A726F8E86FDD2DD67A /* StatusMenuTests.swift */; };
 		9D7EE199DA9BA5FE45FEE221 /* UsagePoller.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F1680CC91D4B17E8008AAC5 /* UsagePoller.swift */; };
 		9FD0EDA5F4EF69D9B63AB4BD /* LoginLauncher.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF4AFDFCC9A75DAB9F4F76FC /* LoginLauncher.swift */; };
 		A81DAF9280BE117B72278457 /* TokenReader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BC4FC98362184322F9B10DB /* TokenReader.swift */; };
@@ -36,9 +39,11 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		0BA01901220F3060334CCBFE /* FableClientTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FableClientTests.swift; sourceTree = "<group>"; };
 		148EE43801483C1680E77FF0 /* ResetFormatter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResetFormatter.swift; sourceTree = "<group>"; };
 		2220AA4086D308545261A3A5 /* UsagePollerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UsagePollerTests.swift; sourceTree = "<group>"; };
 		23656F0079359ADB6D513D91 /* App.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = App.swift; sourceTree = "<group>"; };
+		276207A726F8E86FDD2DD67A /* StatusMenuTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatusMenuTests.swift; sourceTree = "<group>"; };
 		288169152A6D7387D8486AA1 /* StatusMenu.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatusMenu.swift; sourceTree = "<group>"; };
 		2BC4FC98362184322F9B10DB /* TokenReader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TokenReader.swift; sourceTree = "<group>"; };
 		2ED4C061E72837FE642FF007 /* Theme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Theme.swift; sourceTree = "<group>"; };
@@ -46,6 +51,7 @@
 		36FEE4ACBC76CD4E3D2BF53F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		3F1680CC91D4B17E8008AAC5 /* UsagePoller.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UsagePoller.swift; sourceTree = "<group>"; };
 		48E76A912FB0BFEA07A7BDC8 /* ClaudeGauge.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ClaudeGauge.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		4BA59239A66B600B52303863 /* FableClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FableClient.swift; sourceTree = "<group>"; };
 		624506873020CF42AF19F111 /* LoginLauncherTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginLauncherTests.swift; sourceTree = "<group>"; };
 		69108AE1DA5463C56BECD740 /* GaugeIconTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GaugeIconTests.swift; sourceTree = "<group>"; };
 		7548A044DE1E7D5B1B8EA53F /* UsageParserTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UsageParserTests.swift; sourceTree = "<group>"; };
@@ -62,6 +68,7 @@
 			isa = PBXGroup;
 			children = (
 				23656F0079359ADB6D513D91 /* App.swift */,
+				4BA59239A66B600B52303863 /* FableClient.swift */,
 				BB37FB1FE3BC3D163B5CC1A6 /* GaugeIcon.swift */,
 				36FEE4ACBC76CD4E3D2BF53F /* Info.plist */,
 				EF4AFDFCC9A75DAB9F4F76FC /* LoginLauncher.swift */,
@@ -96,9 +103,11 @@
 		9624B0A458CBB0501577F8E1 /* ClaudeGaugeTests */ = {
 			isa = PBXGroup;
 			children = (
+				0BA01901220F3060334CCBFE /* FableClientTests.swift */,
 				69108AE1DA5463C56BECD740 /* GaugeIconTests.swift */,
 				624506873020CF42AF19F111 /* LoginLauncherTests.swift */,
 				32DD68AC3C418EB66C949C95 /* ResetFormatterTests.swift */,
+				276207A726F8E86FDD2DD67A /* StatusMenuTests.swift */,
 				BABE9EC07FEC3B85A887AA2D /* ThemeTests.swift */,
 				C6C823F0C56D28EB87FC1491 /* TokenReaderTests.swift */,
 				7548A044DE1E7D5B1B8EA53F /* UsageParserTests.swift */,
@@ -188,6 +197,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				BC1E76874CDD833CBAFBC3B1 /* App.swift in Sources */,
+				3AA211740306D6760F06A1B1 /* FableClient.swift in Sources */,
 				D3A7EEC49D915ED9D8CC93B9 /* GaugeIcon.swift in Sources */,
 				9FD0EDA5F4EF69D9B63AB4BD /* LoginLauncher.swift in Sources */,
 				D593D73740770AF14715BF52 /* ResetFormatter.swift in Sources */,
@@ -203,9 +213,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9AFCB32228305EEACFED14A3 /* FableClientTests.swift in Sources */,
 				162208EA6A9F66A83BC4F22A /* GaugeIconTests.swift in Sources */,
 				572159CA4B084E29FE0A3086 /* LoginLauncherTests.swift in Sources */,
 				D114544DAF352398AF4E4C08 /* ResetFormatterTests.swift in Sources */,
+				9CEC345540C69B03E51ADD0B /* StatusMenuTests.swift in Sources */,
 				1FE4060ED9E112D84FA74FA2 /* ThemeTests.swift in Sources */,
 				5BE42A35B1014B08D0DD2633 /* TokenReaderTests.swift in Sources */,
 				D26E985CDA813FFD31149D07 /* UsageParserTests.swift in Sources */,

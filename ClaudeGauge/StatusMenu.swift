@@ -31,7 +31,7 @@ final class StatusMenu: NSObject, NSMenuDelegate {
         menu.removeAllItems()
         let state = poller.state
 
-        for line in Self.statusLines(for: state, now: Date()) {
+        for line in Self.statusLines(for: state, fable: poller.fable, now: Date()) {
             let item = NSMenuItem(title: line, action: nil, keyEquivalent: "")
             item.isEnabled = false
             menu.addItem(item)
@@ -64,14 +64,14 @@ final class StatusMenu: NSObject, NSMenuDelegate {
         }
     }
 
-    static func statusLines(for state: GaugeState, now: Date) -> [String] {
+    static func statusLines(for state: GaugeState, fable: FableReading?, now: Date) -> [String] {
         switch state {
         case .starting:
             return ["Checking usage…"]
         case .notLoggedIn:
             return ["Not logged in"]
         case .ok(let reading, _):
-            return usageLines(reading, now: now)
+            return usageLines(reading, fable: fable, now: now)
         case .offline(let last, let lastUpdate):
             var lines: [String]
             if let lastUpdate {
@@ -82,15 +82,22 @@ final class StatusMenu: NSObject, NSMenuDelegate {
             } else {
                 lines = ["Offline"]
             }
-            if let last { lines += usageLines(last, now: now) }
+            if let last { lines += usageLines(last, fable: fable, now: now) }
             return lines
         }
     }
 
-    private static func usageLines(_ r: UsageReading, now: Date) -> [String] {
+    private static func usageLines(_ r: UsageReading, fable: FableReading?, now: Date) -> [String] {
         var lines = [line("Session", r.sessionPercent, r.sessionReset, now: now)]
         if let weekly = r.weeklyPercent {
             lines.append(line("Weekly", weekly, r.weeklyReset, now: now))
+        }
+        if let fable {
+            if let reset = fable.reset, reset <= now {
+                lines.append("Fable: 0%  ·  resets now")
+            } else {
+                lines.append(line("Fable", fable.percent, fable.reset, now: now))
+            }
         }
         return lines
     }

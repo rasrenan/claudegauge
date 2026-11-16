@@ -13,21 +13,47 @@ final class UsagePoller {
 
     private let readToken: @Sendable () -> TokenStatus
     private let fetch: (String) async -> FetchOutcome
+    private let fetchFable: (String) async -> FableFetchOutcome
+    private let fableStore: FableStore
     private let now: () -> Date
 
     private(set) var state: GaugeState = .starting
+    /// Weekly Fable usage, or nil when the account has no Fable limit. Read by the menu when it opens.
+    private(set) var fable: FableReading?
     var onChange: ((GaugeState) -> Void)?
 
+    private var fableSchedule = FableSchedule()
     private var isPolling = false
     private var timer: Timer?
     private var wakeObserver: NSObjectProtocol?
 
     init(readToken: @escaping @Sendable () -> TokenStatus,
          fetch: @escaping (String) async -> FetchOutcome,
+         fetchFable: @escaping (String) async -> FableFetchOutcome = { _ in .failed },
+         fableStore: FableStore = FableStore(),
          now: @escaping () -> Date = Date.init) {
         self.readToken = readToken
         self.fetch = fetch
+        self.fetchFable = fetchFable
+        self.fableStore = fableStore
         self.now = now
+        self.fable = fableStore.load()
+    }
+
+    private func refreshFableIfDue(token: String) async {
+        guard fableSchedule.isDue(now: now()) else { return }
+        let outcome = await fetchFable(token)
+        fableSchedule.record(outcome, now: now())
+        switch outcome {
+        case .reading(let reading):
+            fable = reading
+            fableStore.save(reading)
+        case .noFable:
+            fable = nil
+            fableStore.save(nil)
+        case .rateLimited, .failed:
+            break // keep the last known value
+        }
     }
 
     func pollOnce() async {
@@ -42,7 +68,9 @@ final class UsagePoller {
             update(.notLoggedIn)
             return
         }
-        switch await fetch(token) {
+        let outcome = await fetch(token)
+        await refreshFableIfDue(token: token)
+        switch outcome {
         case .reading(let reading):
             update(.ok(reading, updated: now()))
         case .notLoggedIn:

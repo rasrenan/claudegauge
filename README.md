@@ -7,6 +7,7 @@ Click it to see the exact numbers.
 ```
 Session: 47%  ·  resets in 2h 13m
 Weekly:  31%  ·  resets Thu 14:00
+Fable:   12%  ·  resets Sun 23:00
 ─────────────
 ✓ Launch at login
 Log in…
@@ -46,6 +47,9 @@ The first time it runs, macOS asks whether `security` may read
 - Once a minute (and on wake) the app sends a 1-token Haiku request and reads
   the rate-limit headers from the response. That gives the session and weekly
   percentages and their reset times.
+- The **Fable** line appears only when your account has a Fable weekly limit.
+  It is read from `/api/oauth/usage` every 5 minutes (backing off when rate
+  limited) and does not affect the gauge icon.
 - **Log in…** opens Terminal running `claude auth login`, which opens the
   browser. The gauge refreshes about 90 seconds later.
 

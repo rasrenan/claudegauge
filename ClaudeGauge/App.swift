@@ -20,7 +20,8 @@ final class AppDelegate: NSObject, NSApplicationDelegate {
 
         let poller = UsagePoller(
             readToken: { TokenReader().status(now: Date()) },
-            fetch: { await UsageClient().fetch(token: $0) })
+            fetch: { await UsageClient().fetch(token: $0) },
+            fetchFable: { await FableClient().fetch(token: $0) })
         let launcher = LoginLauncher()
         self.poller = poller
         self.launcher = launcher
