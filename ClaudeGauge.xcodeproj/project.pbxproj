@@ -16,10 +16,12 @@
 		572159CA4B084E29FE0A3086 /* LoginLauncherTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 624506873020CF42AF19F111 /* LoginLauncherTests.swift */; };
 		5BE42A35B1014B08D0DD2633 /* TokenReaderTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6C823F0C56D28EB87FC1491 /* TokenReaderTests.swift */; };
 		84AE56B9BE2AB4116D3E9221 /* UsagePollerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2220AA4086D308545261A3A5 /* UsagePollerTests.swift */; };
+		90564856940CE5DF2C986400 /* UpdateInstaller.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7567DBF8A9A94D66251098A /* UpdateInstaller.swift */; };
 		9AFCB32228305EEACFED14A3 /* FableClientTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BA01901220F3060334CCBFE /* FableClientTests.swift */; };
 		9CEC345540C69B03E51ADD0B /* StatusMenuTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 276207A726F8E86FDD2DD67A /* StatusMenuTests.swift */; };
 		9D7EE199DA9BA5FE45FEE221 /* UsagePoller.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F1680CC91D4B17E8008AAC5 /* UsagePoller.swift */; };
 		9FD0EDA5F4EF69D9B63AB4BD /* LoginLauncher.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF4AFDFCC9A75DAB9F4F76FC /* LoginLauncher.swift */; };
+		A2B1A95FB8D9017D447CF806 /* UpdateInstallerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9F2A84563CEE45C94EABE94 /* UpdateInstallerTests.swift */; };
 		A81DAF9280BE117B72278457 /* TokenReader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BC4FC98362184322F9B10DB /* TokenReader.swift */; };
 		A930D2F58526EC05C34E36F6 /* Theme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2ED4C061E72837FE642FF007 /* Theme.swift */; };
 		BC1E76874CDD833CBAFBC3B1 /* App.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23656F0079359ADB6D513D91 /* App.swift */; };
@@ -68,7 +70,9 @@
 		BABE9EC07FEC3B85A887AA2D /* ThemeTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThemeTests.swift; sourceTree = "<group>"; };
 		BB37FB1FE3BC3D163B5CC1A6 /* GaugeIcon.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GaugeIcon.swift; sourceTree = "<group>"; };
 		C6C823F0C56D28EB87FC1491 /* TokenReaderTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TokenReaderTests.swift; sourceTree = "<group>"; };
+		C7567DBF8A9A94D66251098A /* UpdateInstaller.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdateInstaller.swift; sourceTree = "<group>"; };
 		C79B31EB6EF06E998165E171 /* SemVerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SemVerTests.swift; sourceTree = "<group>"; };
+		C9F2A84563CEE45C94EABE94 /* UpdateInstallerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdateInstallerTests.swift; sourceTree = "<group>"; };
 		E0B7E5DA4391A5BABEB66C57 /* UpdateCheckerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdateCheckerTests.swift; sourceTree = "<group>"; };
 		EF4AFDFCC9A75DAB9F4F76FC /* LoginLauncher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginLauncher.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -89,6 +93,7 @@
 				2ED4C061E72837FE642FF007 /* Theme.swift */,
 				2BC4FC98362184322F9B10DB /* TokenReader.swift */,
 				03186FCA8B30CB0CE7C75CEB /* UpdateChecker.swift */,
+				C7567DBF8A9A94D66251098A /* UpdateInstaller.swift */,
 				B4FC68BCC2D16DD28FDB0B2A /* UsageClient.swift */,
 				3F1680CC91D4B17E8008AAC5 /* UsagePoller.swift */,
 			);
@@ -125,6 +130,7 @@
 				BABE9EC07FEC3B85A887AA2D /* ThemeTests.swift */,
 				C6C823F0C56D28EB87FC1491 /* TokenReaderTests.swift */,
 				E0B7E5DA4391A5BABEB66C57 /* UpdateCheckerTests.swift */,
+				C9F2A84563CEE45C94EABE94 /* UpdateInstallerTests.swift */,
 				7548A044DE1E7D5B1B8EA53F /* UsageParserTests.swift */,
 				2220AA4086D308545261A3A5 /* UsagePollerTests.swift */,
 			);
@@ -233,6 +239,7 @@
 				A930D2F58526EC05C34E36F6 /* Theme.swift in Sources */,
 				A81DAF9280BE117B72278457 /* TokenReader.swift in Sources */,
 				EB9CFB1D5FFFB086DE5BEB11 /* UpdateChecker.swift in Sources */,
+				90564856940CE5DF2C986400 /* UpdateInstaller.swift in Sources */,
 				DBEE1FA4DFB0A904BDDED5AD /* UsageClient.swift in Sources */,
 				9D7EE199DA9BA5FE45FEE221 /* UsagePoller.swift in Sources */,
 			);
@@ -251,6 +258,7 @@
 				1FE4060ED9E112D84FA74FA2 /* ThemeTests.swift in Sources */,
 				5BE42A35B1014B08D0DD2633 /* TokenReaderTests.swift in Sources */,
 				0EED18FDAE0AEC9C2C59EA93 /* UpdateCheckerTests.swift in Sources */,
+				A2B1A95FB8D9017D447CF806 /* UpdateInstallerTests.swift in Sources */,
 				D26E985CDA813FFD31149D07 /* UsageParserTests.swift in Sources */,
 				84AE56B9BE2AB4116D3E9221 /* UsagePollerTests.swift in Sources */,
 			);
