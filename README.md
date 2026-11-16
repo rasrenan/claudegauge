@@ -8,6 +8,17 @@
   <b>A tiny speedometer in your Mac's menu bar that shows how much of your Claude usage limit you have used.</b>
 </p>
 
+<p align="center">
+  <img src="docs/images/demo.gif" width="560" alt="Animation: the claudeGauge dial in the menu bar sweeping from 0% (green) through amber to 100% (red)">
+</p>
+
+<p align="center">
+  <a href="https://github.com/rasrenan/claudegauge/releases/latest/download/ClaudeGauge.dmg"><b>⬇️ Download for macOS</b></a>
+  &nbsp;·&nbsp; Free and open source &nbsp;·&nbsp; macOS 14+
+</p>
+
+<p align="center"><sub>Unofficial project, not affiliated with or endorsed by Anthropic. Claude is a trademark of Anthropic.</sub></p>
+
 ---
 
 ## What is this?
@@ -182,6 +193,13 @@ Applications, the button opens the download page instead.
 
 ## Questions
 
+**Why does macOS say it "could not verify claudeGauge is free of malware"?**
+Because claudeGauge is free and isn't signed with a paid Apple Developer ID
+($99/year), not because anything is wrong with it. The full source code is in
+this repository, and you can build it yourself instead (Option 2). You only
+allow it once (*Open Anyway*); updates installed from the menu don't show the
+warning again.
+
 **Does claudeGauge use up my Claude quota?**
 Barely. Once a minute it sends Claude the smallest possible request (one word,
 one token of reply) and reads the usage numbers that come back with the answer.
@@ -289,6 +307,10 @@ release contains, so keep two-factor authentication on the GitHub account.
 Inspired by [Clawdmeter](https://github.com/HermannBjorgvin/Clawdmeter), an
 ESP32 desk display for Claude usage. No code or assets are copied from it. The
 icon and the dial are original drawings made in code.
+
+claudeGauge is an independent, unofficial project. It is not affiliated with,
+endorsed by or sponsored by Anthropic. "Claude" and "Claude Code" are
+trademarks of Anthropic, used here only to describe what the app works with.
 
 ## Licence
 

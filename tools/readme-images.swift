@@ -162,3 +162,70 @@ func menuMock(dark: Bool) -> NSImage {
 }
 save(menuMock(dark: true), "menu-dark.png")
 save(menuMock(dark: false), "menu-light.png")
+
+// MARK: Animated demo (docs/images/demo.gif)
+
+/// Rasterises an NSImage at `scale` into a CGImage.
+func cgImage(_ image: NSImage) -> CGImage {
+    let w = Int(image.size.width * scale), h = Int(image.size.height * scale)
+    let rep = NSBitmapImageRep(bitmapDataPlanes: nil, pixelsWide: w, pixelsHigh: h, bitsPerSample: 8,
+                               samplesPerPixel: 4, hasAlpha: true, isPlanar: false,
+                               colorSpaceName: .deviceRGB, bytesPerRow: 0, bitsPerPixel: 0)!
+    rep.size = image.size
+    NSGraphicsContext.saveGraphicsState()
+    NSGraphicsContext.current = NSGraphicsContext(bitmapImageRep: rep)
+    image.draw(in: NSRect(origin: .zero, size: image.size))
+    NSGraphicsContext.restoreGraphicsState()
+    return rep.cgImage!
+}
+
+/// One demo frame: the menu bar slice on top, a large dial and its percentage below.
+func demoFrame(_ percent: Int) -> NSImage {
+    let size = NSSize(width: 560, height: 250)
+    return render(size, dark: true) { rect in
+        NSColor(white: 0.11, alpha: 1).setFill()
+        NSBezierPath(roundedRect: rect, xRadius: 16, yRadius: 16).fill()
+
+        let bar = menuBar(ok(percent), dark: true)
+        bar.draw(in: NSRect(x: (size.width - bar.size.width) / 2, y: size.height - 24 - bar.size.height,
+                            width: bar.size.width, height: bar.size.height))
+
+        let zoom: CGFloat = 5
+        let dial = NSSize(width: GaugeIcon.size.width * zoom, height: GaugeIcon.size.height * zoom)
+        GaugeIcon.image(for: ok(percent)).draw(in: NSRect(x: (size.width - dial.width) / 2, y: 46,
+                                                          width: dial.width, height: dial.height))
+        let label = "\(percent)%"
+        let attrs: [NSAttributedString.Key: Any] = [
+            .font: NSFont.monospacedDigitSystemFont(ofSize: 22, weight: .semibold),
+            .foregroundColor: Theme.color(forPercent: percent),
+        ]
+        let lw = (label as NSString).size(withAttributes: attrs).width
+        (label as NSString).draw(at: NSPoint(x: (size.width - lw) / 2, y: 14), withAttributes: attrs)
+    }
+}
+
+/// 0 → 100 % with an ease-in-out sweep, a pause at the top, then back to 0 (session reset).
+func demoPercents() -> [(percent: Int, delay: Double)] {
+    func ease(_ t: Double) -> Double { t < 0.5 ? 2 * t * t : 1 - pow(-2 * t + 2, 2) / 2 }
+    var frames: [(Int, Double)] = [(0, 0.6)]
+    let up = 36
+    for i in 1...up { frames.append((Int((ease(Double(i) / Double(up)) * 100).rounded()), 0.05)) }
+    frames[frames.count - 1].1 = 1.2
+    let down = 12
+    for i in 1...down { frames.append((Int(((1 - Double(i) / Double(down)) * 100).rounded()), 0.03)) }
+    return frames
+}
+
+func saveGIF(_ name: String) {
+    let frames = demoPercents()
+    let url = URL(fileURLWithPath: "\(outDir)/\(name)") as CFURL
+    let dest = CGImageDestinationCreateWithURL(url, "com.compuserve.gif" as CFString, frames.count, nil)!
+    CGImageDestinationSetProperties(dest, [kCGImagePropertyGIFDictionary: [kCGImagePropertyGIFLoopCount: 0]] as CFDictionary)
+    for (percent, delay) in frames {
+        let props = [kCGImagePropertyGIFDictionary: [kCGImagePropertyGIFDelayTime: delay]] as CFDictionary
+        CGImageDestinationAddImage(dest, cgImage(demoFrame(percent)), props)
+    }
+    CGImageDestinationFinalize(dest)
+    print("wrote \(name)")
+}
+saveGIF("demo.gif")
