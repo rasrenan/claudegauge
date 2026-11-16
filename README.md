@@ -1,8 +1,9 @@
 # claudegauge
 
 A native macOS menu bar app that shows your Claude 5-hour session usage as a
-coloured, battery-like gauge: green below 50%, amber from 50%, red from 80%.
-Click it to see the exact numbers.
+small semicircular dial: the needle lies flat left at 0% and sweeps clockwise to
+flat right at 100%, painting the swept area green below 50%, amber from 50% and
+red from 80%. Hover for the percentage; click it to see the exact numbers.
 
 ```
 Session: 47%  ·  resets in 2h 13m
